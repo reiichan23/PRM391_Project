@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_16"
+    android:background="@color/background_color">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="373dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="@dimen/margin_20"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/fpt_kitchen"
+        tools:ignore="ImageContrastCheck" />
+
+    <!-- Login Title -->
+    <TextView
+        android:id="@+id/text_login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_below="@+id/image_logo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/login_title"
+        android:textSize="@dimen/text_size24"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <!-- Username Input -->
+    <EditText
+        android:id="@+id/input_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_login_title"
+        android:layout_marginTop="@dimen/margin_16"
+        android:hint="@string/username_hint"
+        android:inputType="textEmailAddress"
+        android:minHeight="@dimen/margin_48"
+        android:selectAllOnFocus="true"
+        android:textColorHint="#546E7A" />
+
+    <!-- Password Input -->
+    <EditText
+        android:id="@+id/input_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_username"
+        android:layout_marginTop="@dimen/margin_10"
+        android:hint="@string/matkhau"
+        android:imeActionLabel="Passcode"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:minHeight="@dimen/margin_48"
+        android:selectAllOnFocus="true" />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/input_password"
+        android:text="@string/login_button" />
+
+    <!-- Not Registered Text -->
+    <TextView
+        android:id="@+id/text_no_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_login"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/not_account_text"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Layout containing divider and "Or" text -->
+    <LinearLayout
+        android:id="@+id/layout_or_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_no_account"
+        android:layout_marginTop="@dimen/margin_16"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Left Divider -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_16"
+            android:background="@color/black" />
+
+        <!-- "Or" Text -->
+        <TextView
+            android:id="@+id/text_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            android:text="@string/or_text"
+            android:textSize="@dimen/text_size20"
+            android:textStyle="bold" />
+
+        <!-- Right Divider -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:background="@color/black" />
+
+    </LinearLayout>
+
+    <!-- Sign-up Button -->
+    <Button
+        android:id="@+id/button_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_below="@+id/layout_or_divider"
+        android:text="@string/dangkytaikhoan" />
+
+
+</RelativeLayout>
