@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Project_Food</string>
+    <string name="logo_description">App Logo</string>
+    <string name="welcome_message">Chào mừng bạn đến với ứng dụng!</string>
+    <string name="login_title">Đăng Nhập</string>
+    <string name="username_hint">Nhập tên đăng nhập</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="login_button">Đăng Nhập</string>
+    <string name="not_account_text">Bạn chưa có tài khoản?</string>
+    <string name="or_text">Hoặc</string>
+    <string name="dangkytaikhoan">Đăng ký tài khoản</string>
+    <string name="signup_form_title">Đăng Ký Tài Khoản</string>
+    <string name="password_hint">Nhập mật khẩu</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="signup_button_text">Đăng Ký</string>
+    <string name="dacotaikhoan">Bạn đã có tài khoản?</string>
+    <string name="relogin_button_text">Đăng Nhập Lại</string>
+
 </resources>
