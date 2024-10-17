@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_16"
-    android:background="@color/background_color">
+    android:background="@drawable/color_gradient">
 
     <!-- Logo -->
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_height="188dp"
         android:layout_marginTop="@dimen/margin_20"
         android:contentDescription="@string/logo_description"
-        android:src="@drawable/fpt_kitchen"
+        android:src="@drawable/fpt_kitchen_white"
         tools:ignore="ImageContrastCheck" />
 
     <!-- Login Title -->
@@ -38,6 +38,7 @@
         android:layout_below="@+id/text_login_title"
         android:layout_marginTop="@dimen/margin_16"
         android:hint="@string/username_hint"
+        android:autofillHints="@string/username_hint"
         android:inputType="textEmailAddress"
         android:minHeight="@dimen/margin_48"
         android:selectAllOnFocus="true"
@@ -51,6 +52,7 @@
         android:layout_below="@+id/input_username"
         android:layout_marginTop="@dimen/margin_10"
         android:hint="@string/matkhau"
+        android:autofillHints="@string/matkhau"
         android:imeActionLabel="Passcode"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
