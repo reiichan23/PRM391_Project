@@ -1,4 +1,4 @@
-package Activity;
+package com.example.prm391_project.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.example.prm391_project.Activity.BaseActivity;
 import com.example.prm391_project.Domain.Foods;
 import com.example.prm391_project.Helper.ManagmentCart;
 import com.example.prm391_project.R;
