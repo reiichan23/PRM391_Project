@@ -1,6 +1,5 @@
-package Activity;
+package com.example.prm391_project.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +8,8 @@ import android.view.View;
 
 //import com.example.prm391_project.Adapter.CartAdapter;
 
-import com.example.prm391_project.Helper.ChangeNumberItemsListener;
 import com.example.prm391_project.Helper.ManagmentCart;
-import com.example.prm391_project.R;
 import com.example.prm391_project.databinding.ActivityCartBinding;
-
-import Activity.BaseActivity;
 
 public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
