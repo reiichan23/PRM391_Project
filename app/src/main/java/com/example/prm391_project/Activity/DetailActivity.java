@@ -1,14 +1,10 @@
 package com.example.prm391_project.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 
 import com.bumptech.glide.Glide;
-import com.example.prm391_project.Activity.BaseActivity;
 import com.example.prm391_project.Domain.Foods;
-import com.example.prm391_project.Helper.ManagmentCart;
+import com.example.prm391_project.Helper.ManagementCart;
 import com.example.prm391_project.R;
 import com.example.prm391_project.databinding.ActivityDetailBinding;
 
@@ -16,7 +12,7 @@ public class DetailActivity extends BaseActivity {
     ActivityDetailBinding binding;
     private Foods object;
     private int num=1;
-    private ManagmentCart managmentCart;
+    private ManagementCart managementCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +25,7 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void setVariable() {
-        managmentCart = new ManagmentCart(this);
+        managementCart = new ManagementCart(this);
         binding.backBtn.setOnClickListener(view -> finish());
 
         Glide.with(DetailActivity.this)
@@ -56,7 +52,7 @@ public class DetailActivity extends BaseActivity {
         });
         binding.addbtn.setOnClickListener(view -> {
             object.setNumberInCart(num);
-            managmentCart.insertFood(object);
+            managementCart.insertFood(object);
 
         });
     }

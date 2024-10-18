@@ -1,5 +1,7 @@
 package com.example.prm391_project.Domain;
 
+import androidx.annotation.NonNull;
+
 public class Time {
     private int Id;
     private String Value;
@@ -7,6 +9,7 @@ public class Time {
     public Time() {
     }
 
+    @NonNull
     @Override
     public String toString() {
         return Value ;

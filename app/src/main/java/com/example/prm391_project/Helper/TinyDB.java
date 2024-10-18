@@ -44,8 +44,8 @@ import java.util.Map;
 
 public class TinyDB {
 
-    private SharedPreferences preferences;
-    private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
+    private final SharedPreferences preferences;
+    private String DEFAULT_APP_IMAGEKIT_DIRECTORY;
     private String lastImagePath = "";
 
     public TinyDB(Context appContext) {
@@ -92,10 +92,10 @@ public class TinyDB {
         if (theFolder == null || theImageName == null || theBitmap == null)
             return null;
 
-        this.DEFAULT_APP_IMAGEDATA_DIRECTORY = theFolder;
+        this.DEFAULT_APP_IMAGEKIT_DIRECTORY = theFolder;
         String mFullPath = setupFullPath(theImageName);
 
-        if (!mFullPath.equals("")) {
+        if (!mFullPath.isEmpty()) {
             lastImagePath = mFullPath;
             saveBitmap(mFullPath, theBitmap);
         }
@@ -120,7 +120,7 @@ public class TinyDB {
      * @return the full path of the image. If it failed to create directory, return empty string
      */
     private String setupFullPath(String imageName) {
-        File mFolder = new File(Environment.getExternalStorageDirectory(), DEFAULT_APP_IMAGEDATA_DIRECTORY);
+        File mFolder = new File(Environment.getExternalStorageDirectory(), DEFAULT_APP_IMAGEKIT_DIRECTORY);
 
         if (isExternalStorageReadable() && isExternalStorageWritable() && !mFolder.exists()) {
             if (!mFolder.mkdirs()) {
@@ -166,7 +166,6 @@ public class TinyDB {
 
         } catch (Exception e) {
             e.printStackTrace();
-            bitmapCompressed = false;
 
         } finally {
             if (out != null) {
@@ -177,7 +176,6 @@ public class TinyDB {
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    streamClosed = false;
                 }
             }
         }
@@ -370,7 +368,7 @@ public class TinyDB {
      */
     public void putListInt(String key, ArrayList<Integer> intList) {
         checkForNullKey(key);
-        Integer[] myIntList = intList.toArray(new Integer[intList.size()]);
+        Integer[] myIntList = intList.toArray(new Integer[0]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myIntList)).apply();
     }
 
@@ -391,7 +389,7 @@ public class TinyDB {
      */
     public void putListLong(String key, ArrayList<Long> longList) {
         checkForNullKey(key);
-        Long[] myLongList = longList.toArray(new Long[longList.size()]);
+        Long[] myLongList = longList.toArray(new Long[0]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myLongList)).apply();
     }
 
@@ -422,7 +420,7 @@ public class TinyDB {
      */
     public void putListDouble(String key, ArrayList<Double> doubleList) {
         checkForNullKey(key);
-        Double[] myDoubleList = doubleList.toArray(new Double[doubleList.size()]);
+        Double[] myDoubleList = doubleList.toArray(new Double[0]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myDoubleList)).apply();
     }
 
@@ -443,7 +441,7 @@ public class TinyDB {
      */
     public void putListString(String key, ArrayList<String> stringList) {
         checkForNullKey(key);
-        String[] myStringList = stringList.toArray(new String[stringList.size()]);
+        String[] myStringList = stringList.toArray(new String[0]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myStringList)).apply();
     }
 

@@ -8,13 +8,13 @@ import android.view.View;
 
 //import com.example.prm391_project.Adapter.CartAdapter;
 
-import com.example.prm391_project.Helper.ManagmentCart;
+import com.example.prm391_project.Helper.ManagementCart;
 import com.example.prm391_project.databinding.ActivityCartBinding;
 
 public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
     private RecyclerView.Adapter adapter;
-    private ManagmentCart managmentCart;
+    private ManagementCart managementCart;
     private double tax;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class CartActivity extends BaseActivity {
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        managmentCart = new ManagmentCart(this);
+        managementCart = new ManagementCart(this);
 
 
         setVariable();
@@ -31,7 +31,7 @@ public class CartActivity extends BaseActivity {
     }
 
     private void initList() {
-        if (managmentCart.getListCart().isEmpty()){
+        if (managementCart.getListCart().isEmpty()){
             binding.emptyTxt.setVisibility(View.VISIBLE);
             binding.scrollviewCart.setVisibility(View.GONE);
         }else {
@@ -41,7 +41,7 @@ public class CartActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.cardView.setLayoutManager(linearLayoutManager);
 
-//        adapter = new CartAdapter(managmentCart.getListCart(), this, () -> calculateCart());
+//        adapter = new CartAdapter(managementCart.getListCart(), this, () -> calculateCart());
 
         binding.cardView.setAdapter(adapter);
     }
@@ -50,10 +50,10 @@ public class CartActivity extends BaseActivity {
         double percentTax=0.02;
         double delivery=10;
 
-        tax = Math.round(managmentCart.getTotalFee()*percentTax*100.0)/100;
+        tax = Math.round(managementCart.getTotalFee()*percentTax*100.0)/100;
 
-        double total = Math.round((managmentCart.getTotalFee() + tax + delivery)*100)/100;
-        double itemTotal = Math.round(managmentCart.getTotalFee()*100)/100;
+        double total = Math.round((managementCart.getTotalFee() + tax + delivery)*100)/100;
+        double itemTotal = Math.round(managementCart.getTotalFee()*100)/100;
 
         binding.totalFeeTxt.setText("$"+itemTotal);
         binding.taxTxt.setText("$" + tax);
