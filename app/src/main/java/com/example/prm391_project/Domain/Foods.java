@@ -1,5 +1,7 @@
 package com.example.prm391_project.Domain;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Foods implements Serializable {
@@ -20,6 +22,7 @@ public class Foods implements Serializable {
     public Foods() {
     }
 
+    @NonNull
     @Override
     public String toString() {
         return  Title ;
