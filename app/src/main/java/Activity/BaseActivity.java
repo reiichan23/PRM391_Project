@@ -13,5 +13,13 @@ public class BaseActivity extends AppCompatActivity {
 FirebaseAuth mAuth;
 FirebaseDatabase database;
     public String TAG="Group2";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        database = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        getWindow().setStatusBarColor(getResources().getColor(com.example.prm391_project.R.color.white));
+    }
 }
