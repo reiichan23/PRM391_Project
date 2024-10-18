@@ -100,7 +100,7 @@
         android:selectAllOnFocus="true" />
 
     <Button
-        android:id="@+id/b_login"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
@@ -118,7 +118,7 @@
         android:id="@+id/Yes_Account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/b_login"
+        android:layout_below="@id/button_login"
         android:layout_marginTop="@dimen/margin_16"
         android:text="Đã có tài khoản? chọn Đăng nhập"
         android:layout_centerHorizontal="true" />
