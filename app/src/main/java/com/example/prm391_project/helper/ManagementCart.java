@@ -1,9 +1,9 @@
-package com.example.prm391_project.Helper;
+package com.example.prm391_project.helper;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.prm391_project.Domain.Foods;
+import com.example.prm391_project.model.Foods;
 
 import java.util.ArrayList;
 
