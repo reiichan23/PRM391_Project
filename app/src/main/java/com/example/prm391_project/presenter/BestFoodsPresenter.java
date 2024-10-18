@@ -1,13 +1,10 @@
-package com.example.prm391_project.Adapter;
+package com.example.prm391_project.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,19 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.example.prm391_project.Activity.DetailActivity;
-import com.example.prm391_project.Domain.Foods;
-import com.example.prm391_project.R;
+import com.example.prm391_project.view.DetailActivity;
+import com.example.prm391_project.model.Foods;
 import com.example.prm391_project.databinding.ViewholderBestDealBinding;
 
 import java.util.ArrayList;
 
-public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.ViewHolder> {
+public class BestFoodsPresenter extends RecyclerView.Adapter<BestFoodsPresenter.ViewHolder> {
     ArrayList<Foods> items;
     Context context;
     ViewholderBestDealBinding binding;
 
-    public BestFoodsAdapter(ArrayList<Foods> items) {
+    public BestFoodsPresenter(ArrayList<Foods> items) {
         this.items = items;
     }
 

@@ -1,10 +1,10 @@
-package com.example.prm391_project.Activity;
+package com.example.prm391_project.view;
 
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
-import com.example.prm391_project.Domain.Foods;
-import com.example.prm391_project.Helper.ManagementCart;
+import com.example.prm391_project.model.Foods;
+import com.example.prm391_project.helper.ManagementCart;
 import com.example.prm391_project.R;
 import com.example.prm391_project.databinding.ActivityDetailBinding;
 

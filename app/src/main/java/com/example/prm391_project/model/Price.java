@@ -1,4 +1,4 @@
-package com.example.prm391_project.Domain;
+package com.example.prm391_project.model;
 
 import androidx.annotation.NonNull;
 

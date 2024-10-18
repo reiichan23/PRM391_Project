@@ -1,20 +1,12 @@
-package com.example.prm391_project.Activity;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.prm391_project.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 
 import com.example.prm391_project.MainActivity;
-import com.example.prm391_project.R;
 import com.example.prm391_project.databinding.ActivityLoginBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 
 public class LoginActivity extends BaseActivity {
     ActivityLoginBinding binding;

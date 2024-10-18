@@ -1,4 +1,4 @@
-package Domain;
+package com.example.prm391_project.model;
 
 public class Category {
     private int id;

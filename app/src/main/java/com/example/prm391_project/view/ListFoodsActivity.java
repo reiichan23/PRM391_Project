@@ -1,4 +1,4 @@
-package com.example.prm391_project.Activity;
+package com.example.prm391_project.view;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.prm391_project.Adapter.FoodListAdapter;
-import com.example.prm391_project.Domain.Foods;
+import com.example.prm391_project.presenter.FoodListPresenter;
+import com.example.prm391_project.model.Foods;
 import com.example.prm391_project.databinding.ActivityListFoodsBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,7 +61,7 @@ public class ListFoodsActivity extends BaseActivity {
                     }
                     if (list.size()>0){
                         binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this,2));
-                        adapterListFood = new FoodListAdapter(list);
+                        adapterListFood = new FoodListPresenter(list);
                         binding.foodListView.setAdapter(adapterListFood);
                     }
                     binding.progressBar.setVisibility(View.GONE);

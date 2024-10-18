@@ -1,4 +1,4 @@
-package com.example.prm391_project.Activity;
+package com.example.prm391_project.view;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.View;
 
 //import com.example.prm391_project.Adapter.CartAdapter;
 
-import com.example.prm391_project.Helper.ManagementCart;
+import com.example.prm391_project.helper.ManagementCart;
 import com.example.prm391_project.databinding.ActivityCartBinding;
 
 public class CartActivity extends BaseActivity {
