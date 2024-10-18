@@ -35,11 +35,6 @@ public class CategoryPresenter  extends RecyclerView.Adapter<CategoryPresenter.v
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewholder holder, int position) {
-
-    }
-
-    @Override
     public void onBindViewHolder(@NonNull CategoryPresenter.viewholder holder, int position) {
 
         holder.titleTxt.setText(items.get(position).getName());
