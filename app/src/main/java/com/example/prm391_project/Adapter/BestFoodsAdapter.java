@@ -19,37 +19,49 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.prm391_project.Activity.DetailActivity;
 import com.example.prm391_project.Domain.Foods;
 import com.example.prm391_project.R;
+import com.example.prm391_project.databinding.ViewholderBestDealBinding;
 
 import java.util.ArrayList;
 
-public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.viewholder> {
+public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.ViewHolder> {
     ArrayList<Foods> items;
     Context context;
+    ViewholderBestDealBinding binding;
 
     public BestFoodsAdapter(ArrayList<Foods> items) {
         this.items = items;
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ViewholderBestDealBinding binding;
+
+        public ViewHolder(@NonNull ViewholderBestDealBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
+
     @NonNull
     @Override
-    public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context= parent.getContext();
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_best_deal, parent, false);
-        return new viewholder(inflate);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        binding = ViewholderBestDealBinding.inflate(inflater, parent, false);
+        return new ViewHolder(binding);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        holder.titleTxt.setText(items.get(position).getTitle());
-        holder.priceTxt.setText("$"+items.get(position).getPrice());
-        holder.timeTxt.setText(items.get(position).getTimeValue()+" min");
-        holder.starTxt.setText(""+items.get(position).getStar());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.binding.titleTxt.setText(items.get(position).getTitle());
+        holder.binding.priceTxt.setText("$"+items.get(position).getPrice());
+        holder.binding.timeTxt.setText(items.get(position).getTimeValue()+" min");
+        holder.binding.starTxt.setText(""+items.get(position).getStar());
 
         Glide.with(context)
                 .load(items.get(position).getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
-                .into(holder.pic);
+                .into(holder.binding.pic);
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
@@ -61,18 +73,5 @@ public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.view
     @Override
     public int getItemCount() {
         return items.size();
-    }
-
-    public static class viewholder extends RecyclerView.ViewHolder {
-        TextView titleTxt, priceTxt, starTxt, timeTxt;
-        ImageView pic;
-        public viewholder(@NonNull View itemView) {
-            super(itemView);
-            titleTxt = itemView.findViewById(R.id.titleTxt);
-            priceTxt = itemView.findViewById(R.id.priceTxt);
-            starTxt = itemView.findViewById(R.id.starTxt);
-            timeTxt = itemView.findViewById(R.id.timeTxt);
-            pic = itemView.findViewById(R.id.pic);
-         }
     }
 }

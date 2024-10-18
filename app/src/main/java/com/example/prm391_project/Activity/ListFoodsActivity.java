@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.prm391_project.Adapter.FoodListAdapter;
 import com.example.prm391_project.Domain.Foods;
 import com.example.prm391_project.databinding.ActivityListFoodsBinding;
 import com.google.firebase.database.DataSnapshot;
