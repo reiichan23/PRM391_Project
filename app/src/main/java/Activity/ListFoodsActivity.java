@@ -59,7 +59,11 @@ public class ListFoodsActivity extends BaseActivity {
                     for(DataSnapshot issue: snapshot.getChildren()){
                         list.add(issue.getValue(Foods.class));
                     }
-
+                    if (list.size()>0){
+                        binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this,2));
+                        adapterListFood = new FoodListAdapter(list);
+                        binding.foodListView.setAdapter(adapterListFood);
+                    }
                     binding.progressBar.setVisibility(View.GONE);
                 }
             }
