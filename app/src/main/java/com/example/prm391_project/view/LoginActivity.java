@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 
 import com.example.prm391_project.MainActivity;
-import com.example.prm391_project.data  binding.ActivityLoginBinding;
+import com.example.prm391_project.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends BaseActivity {
     ActivityLoginBinding binding;
