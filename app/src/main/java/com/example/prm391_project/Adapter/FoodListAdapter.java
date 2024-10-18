@@ -1,7 +1,5 @@
 package com.example.prm391_project.Adapter;
 
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -22,11 +17,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.prm391_project.Activity.DetailActivity;
 import com.example.prm391_project.Domain.Foods;
 import com.example.prm391_project.R;
-
+import com.example.prm391_project.databinding.ViewholderListFoodBinding;
 
 import java.util.ArrayList;
 
-public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewholder> {
+public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.ViewHolder> {
     ArrayList<Foods> items;
     Context context;
 
@@ -36,28 +31,31 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewho
 
     @NonNull
     @Override
-    public FoodListAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_list_food, parent, false);
-        return new viewholder(inflate);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        ViewholderListFoodBinding binding = ViewholderListFoodBinding.inflate(inflater, parent, false);
+        return new ViewHolder(binding);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull FoodListAdapter.viewholder holder, int position) {
-        holder.titleTxt.setText(items.get(position).getTitle());
-        holder.timeTxt.setText(items.get(position).getTimeValue()+ " min");
-        holder.priceTxt.setText("$"+ items.get(position).getPrice());
-        holder.rateTxt.setText(""+items.get(position).getStar());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Foods food = items.get(position);
+        holder.binding.titleTxt.setText(food.getTitle());
+        holder.binding.timeTxt.setText(food.getTimeValue() + " min");
+        holder.binding.priceTxt.setText("$" + food.getPrice());
+        holder.binding.rateTxt.setText("" + food.getStar());
 
-        Log.d("image", items.get(position).getImagePath());
+        Log.d("image", food.getImagePath());
         Glide.with(context)
-                .load(items.get(position).getImagePath())
+                .load(food.getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
-                .into(holder.pic);
+                .into(holder.binding.pic);
+
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("object", items.get(position));
+            intent.putExtra("object", food);
             context.startActivity(intent);
         });
     }
@@ -67,16 +65,12 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewho
         return items.size();
     }
 
-    public static class viewholder extends RecyclerView.ViewHolder {
-        TextView titleTxt, priceTxt, rateTxt, timeTxt;
-        ImageView pic;
-        public viewholder(@NonNull View itemView) {
-            super(itemView);
-            titleTxt = itemView.findViewById(R.id.titleTxt);
-            priceTxt = itemView.findViewById(R.id.priceTxt);
-            rateTxt = itemView.findViewById(R.id.rateTxt);
-            timeTxt = itemView.findViewById(R.id.timeTxt);
-            pic = itemView.findViewById(R.id.pic);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ViewholderListFoodBinding binding;
+
+        public ViewHolder(ViewholderListFoodBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
