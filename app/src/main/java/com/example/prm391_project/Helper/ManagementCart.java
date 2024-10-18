@@ -8,11 +8,11 @@ import com.example.prm391_project.Domain.Foods;
 import java.util.ArrayList;
 
 
-public class ManagmentCart {
-    private Context context;
-    private TinyDB tinyDB;
+public class ManagementCart {
+    private final Context context;
+    private final TinyDB tinyDB;
 
-    public ManagmentCart(Context context) {
+    public ManagementCart(Context context) {
         this.context = context;
         this.tinyDB=new TinyDB(context);
     }
