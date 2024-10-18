@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.prm391_project.Adapter.CartAdapter;
+//import com.example.prm391_project.Adapter.CartAdapter;
+
 import com.example.prm391_project.Helper.ChangeNumberItemsListener;
 import com.example.prm391_project.Helper.ManagmentCart;
 import com.example.prm391_project.R;
@@ -44,7 +45,9 @@ public class CartActivity extends BaseActivity {
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.cardView.setLayoutManager(linearLayoutManager);
-        adapter = new CartAdapter(managmentCart.getListCart(), this, () -> calculateCart());
+
+//        adapter = new CartAdapter(managmentCart.getListCart(), this, () -> calculateCart());
+
         binding.cardView.setAdapter(adapter);
     }
 
