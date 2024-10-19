@@ -41,7 +41,7 @@ public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Foods food = items.get(position);
         holder.binding.titleTxt.setText(food.getTitle());
-        holder.binding.timeTxt.setText(food.getTimeValue() + " min");
+        holder.binding.timeTxt.setText(food.getTimeValue() + " ph");
         holder.binding.priceTxt.setText("$" + food.getPrice());
         holder.binding.rateTxt.setText("" + food.getStar());
 

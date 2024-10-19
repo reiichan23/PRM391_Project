@@ -9,7 +9,7 @@
         android:id="@+id/emptyTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="your cart is Empty"
+        android:text="Giỏ hàng đang trống"
         android:textColor="@color/blue_grey"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

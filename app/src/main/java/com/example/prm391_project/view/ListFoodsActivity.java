@@ -59,8 +59,8 @@ public class ListFoodsActivity extends BaseActivity {
                     for(DataSnapshot issue: snapshot.getChildren()){
                         list.add(issue.getValue(Foods.class));
                     }
-                    if (list.size()>0){
-                        binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this,2));
+                    if (!list.isEmpty()){
+                        binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this,1));
                         adapterListFood = new FoodListPresenter(list);
                         binding.foodListView.setAdapter(adapterListFood);
                     }
