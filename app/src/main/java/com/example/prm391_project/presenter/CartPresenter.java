@@ -1,5 +1,6 @@
 package com.example.prm391_project.presenter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.prm391_project.R;
+import com.example.prm391_project.databinding.ViewholderCartBinding;
 import com.example.prm391_project.helper.ChangeNumberItemsListener;
 import com.example.prm391_project.model.Foods;
 
@@ -21,51 +23,61 @@ import java.util.ArrayList;
 
 import com.example.prm391_project.helper.ManagementCart;
 
-public class CartPresenter  extends RecyclerView.Adapter<CartPresenter.viewholder> {
+public class CartPresenter extends RecyclerView.Adapter<CartPresenter.ViewHolder> {
     ArrayList<Foods> list;
-    private ManagementCart managmentCart;
+    private final ManagementCart managementCart;
     ChangeNumberItemsListener changeNumberItemsListener;
 
     public CartPresenter(ArrayList<Foods> list, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
         this.list = list;
-        managmentCart = new ManagementCart(context);
+        managementCart = new ManagementCart(context);
         this.changeNumberItemsListener = changeNumberItemsListener;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ViewholderCartBinding binding;
+
+        public ViewHolder(@NonNull ViewholderCartBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
     }
 
     @NonNull
     @Override
-    public CartPresenter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_cart, parent, false);
-        return new viewholder(inflate);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        ViewholderCartBinding binding = ViewholderCartBinding.inflate(inflater, parent, false);
+        return new ViewHolder(binding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull CartPresenter.viewholder holder, int position) {
-        holder.title.setText(list.get(position).getTitle());
-        holder.feeEachItem.setText("$"+(list.get(position).getNumberInCart()* list.get(position).getPrice()));
-        holder.totalEachItem.setText(list.get(position).getNumberInCart() + " * $"+(
-                list.get(position).getPrice()));
-        holder.num.setText(list.get(position).getNumberInCart()+"");
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Foods foodItem = list.get(position);
+        holder.binding.titleTxt.setText(foodItem.getTitle());
+        holder.binding.feeEachItem.setText("$" + (foodItem.getNumberInCart() * foodItem.getPrice()));
+        holder.binding.totalEachItem.setText(foodItem.getNumberInCart() + " * $" + foodItem.getPrice());
+        holder.binding.numberItemTxt.setText(String.valueOf(foodItem.getNumberInCart()));
 
         Glide.with(holder.itemView.getContext())
-                .load(list.get(position).getImagePath())
+                .load(foodItem.getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
-                .into(holder.pic);
+                .into(holder.binding.pic);
 
-        holder.plusItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                managmentCart.plusNumberItem(list, position, () -> {
-                    notifyDataSetChanged();
-                    changeNumberItemsListener.change();
-                });
-            }
+        holder.binding.plusCartBtn.setOnClickListener(view -> {
+            managementCart.plusNumberItem(list, position, () -> {
+                notifyDataSetChanged();
+                changeNumberItemsListener.change();
+            });
         });
 
-        holder.minusItem.setOnClickListener(view -> managmentCart.minusNumberItem(list, position, () -> {
-            notifyDataSetChanged();
-            changeNumberItemsListener.change();
-        }));
+        holder.binding.minusCartBtn.setOnClickListener(view -> {
+            managementCart.minusNumberItem(list, position, () -> {
+                notifyDataSetChanged();
+                changeNumberItemsListener.change();
+            });
+        });
     }
 
     @Override
@@ -73,21 +85,4 @@ public class CartPresenter  extends RecyclerView.Adapter<CartPresenter.viewholde
         return list.size();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder {
-        TextView title, feeEachItem, plusItem, minusItem;
-        ImageView pic;
-        TextView totalEachItem, num;
-        public viewholder(@NonNull View itemView) {
-            super(itemView);
-
-            title = itemView.findViewById(R.id.titleTxt);
-            feeEachItem = itemView.findViewById(R.id.feeEachItem);
-            plusItem = itemView.findViewById(R.id.plusCartBtn);
-            minusItem = itemView.findViewById(R.id.minusCartBtn);
-            pic = itemView.findViewById(R.id.pic);
-            totalEachItem = itemView.findViewById(R.id.totalEachItem);
-            num = itemView.findViewById(R.id.numberItemTxt);
-
-        }
-    }
 }

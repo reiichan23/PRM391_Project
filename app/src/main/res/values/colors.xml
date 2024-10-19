@@ -5,4 +5,13 @@
     <color name="red">#ff914d</color>
     <color name="blue_grey">#2E4058</color>
     <color name="grey">#F5F5F5</color>
+    <color name="green">#396409</color>
+    <color name="background_color">#F0F0F0</color>
+    <color name="text_color">#000000</color>
+    <color name="line_color">#000000</color>
+
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
 </resources>
