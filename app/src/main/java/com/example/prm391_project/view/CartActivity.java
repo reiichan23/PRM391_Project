@@ -3,6 +3,7 @@ package com.example.prm391_project.view;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,7 @@ import android.view.View;
 
 import com.example.prm391_project.helper.ManagementCart;
 import com.example.prm391_project.databinding.ActivityCartBinding;
+import com.example.prm391_project.presenter.CartPresenter;
 
 public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
@@ -23,7 +25,6 @@ public class CartActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
         managementCart = new ManagementCart(this);
-
 
         setVariable();
         calculateCart();
@@ -40,20 +41,19 @@ public class CartActivity extends BaseActivity {
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.cardView.setLayoutManager(linearLayoutManager);
-
-//        adapter = new CartAdapter(managementCart.getListCart(), this, () -> calculateCart());
-
+        adapter = new CartPresenter(managementCart.getListCart(), this, this::calculateCart);
         binding.cardView.setAdapter(adapter);
     }
 
+    @SuppressLint("SetTextI18n")
     private void calculateCart() {
         double percentTax=0.02;
         double delivery=10;
 
-        tax = Math.round(managementCart.getTotalFee()*percentTax*100.0)/100;
+        tax = (double) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
 
-        double total = Math.round((managementCart.getTotalFee() + tax + delivery)*100)/100;
-        double itemTotal = Math.round(managementCart.getTotalFee()*100)/100;
+        double total = (double) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
+        double itemTotal = (double) Math.round(managementCart.getTotalFee() * 100) /100;
 
         binding.totalFeeTxt.setText("$"+itemTotal);
         binding.taxTxt.setText("$" + tax);
