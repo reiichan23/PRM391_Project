@@ -47,5 +47,7 @@ ActivitySignupBinding binding;
                 }
             });
         });
+
+        binding.textView5.setOnClickListener(v -> startActivity(new Intent(SignupActivity.this, LoginActivity.class)));
     }
 }
