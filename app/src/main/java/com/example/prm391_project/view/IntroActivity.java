@@ -27,7 +27,7 @@ ActivityIntroBinding binding;
             }
         });
 
-//        binding.signupBtn.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this, SignupActivity.class)));
+        binding.signupBtn.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this, SignupActivity.class)));
     }
 
 
