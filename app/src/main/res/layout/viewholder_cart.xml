@@ -42,9 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="$0"
-            android:textSize="16sp"
+            android:text="VNĐ"
             android:textColor="@color/blue_grey"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/titleTxt"
             app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
@@ -53,10 +53,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="$0"
+            android:text="VNĐ"
+            android:textColor="@color/red"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@+id/pic"
             app:layout_constraintEnd_toEndOf="parent" />
 
