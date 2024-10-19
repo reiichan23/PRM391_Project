@@ -25,11 +25,18 @@ ActivitySignupBinding binding;
         binding.signupBtn.setOnClickListener(v -> {
             String email = binding.userEdt.getText().toString();
             String password = binding.passEdt.getText().toString();
+            String repassword =  binding.rePassEdt.getText().toString();
 
             if(password.length()<6){
                 Toast.makeText(SignupActivity.this, "Your password must be 6 character", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            if(!repassword.equals(password)){
+                Toast.makeText(SignupActivity.this, "Your password not matching", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this, task -> {
                 if(task.isSuccessful()){
                     Log.i(TAG, "onComplete: ");

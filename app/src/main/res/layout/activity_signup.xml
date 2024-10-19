@@ -18,9 +18,9 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="256dp"
                 android:layout_marginTop="48dp"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/logo_ecobites" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,25 +29,25 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Foody"
-                    android:layout_marginEnd="8dp"
-                    android:textSize="45sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/blue_grey"
-                    />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Foody"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:textSize="45sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/blue_grey"-->
+<!--                    />-->
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="App"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="45sp"
-                    />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="App"-->
+<!--                    android:textColor="@color/blue_grey"-->
+<!--                    android:textSize="45sp"-->
+<!--                    />-->
             </LinearLayout>
 
             <EditText
@@ -73,6 +73,22 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
                 android:hint="Password"
+                android:textAlignment="center"
+                android:textColorHint="@color/blue_grey"
+                android:textSize="16sp"
+                android:ems="10"
+                android:background="@drawable/edittextbackground"
+                android:inputType="textPassword"
+                />
+
+            <EditText
+                android:id="@+id/rePassEdt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Re-Password"
                 android:textAlignment="center"
                 android:textColorHint="@color/blue_grey"
                 android:textSize="16sp"
