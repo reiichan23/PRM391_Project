@@ -10,6 +10,8 @@
         android:label="BEP CUA ME"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
         tools:targetApi="31">
         <activity
             android:name=".view.CartActivity"
@@ -27,6 +29,7 @@
         </activity>
         <activity
             android:name=".view.SignupActivity"
+
             android:exported="false" />
         <activity
             android:name=".view.LoginActivity"
@@ -36,6 +39,7 @@
             android:exported="false" />
         <activity
             android:name=".view.IntroActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
