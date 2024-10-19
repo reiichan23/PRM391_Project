@@ -1,16 +1,16 @@
 package com.example.prm391_project.model;
 
 public class Category {
-    private int id;
+    private int Id;
     private String ImagePath;
     private String Name;
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getImagePath() {

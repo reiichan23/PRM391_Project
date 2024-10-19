@@ -46,7 +46,6 @@ public class MainActivity extends BaseActivity {
 
         binding.searchBtn.setOnClickListener(view -> {
             String text = binding.searchEdt.getText().toString();
-            Log.d(TAG, "setVariable: " + text);
             if(!text.trim().isEmpty()){
                 Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
                 intent.putExtra("text", text);
@@ -59,6 +58,7 @@ public class MainActivity extends BaseActivity {
 
         binding.textView14.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
+            intent.putExtra("viewAll", true);
             startActivity(intent);
         });
     }
@@ -76,7 +76,6 @@ public class MainActivity extends BaseActivity {
                         list.add(issue.getValue(Foods.class));
                     }
                     if(!list.isEmpty()){
-                        Log.d("image", list.toString());
                         binding.bestFoodView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
                         RecyclerView.Adapter adapter = new BestFoodsPresenter(list);
                         binding.bestFoodView.setAdapter(adapter);
@@ -101,9 +100,11 @@ public class MainActivity extends BaseActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for (DataSnapshot issue: snapshot.getChildren()){
-                        list.add(issue.getValue(Category.class));
+                        Category category = issue.getValue(Category.class);
+                        list.add(category);
                     }
                     if(!list.isEmpty()){
+                        Log.d("Category", list.toString());
                         binding.categoryView.setLayoutManager(new GridLayoutManager(MainActivity.this, 4));
                         RecyclerView.Adapter adapter = new CategoryPresenter(list);
                         binding.categoryView.setAdapter(adapter);

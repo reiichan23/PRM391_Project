@@ -2,6 +2,7 @@ package com.example.prm391_project.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import com.example.prm391_project.model.Category;
 
 import java.util.ArrayList;
 
-public class CategoryPresenter  extends RecyclerView.Adapter<CategoryPresenter.viewholder> {
+public class CategoryPresenter  extends RecyclerView.Adapter<CategoryPresenter.Viewholder> {
     ArrayList<Category> items;
     Context context;
 
@@ -28,14 +29,14 @@ public class CategoryPresenter  extends RecyclerView.Adapter<CategoryPresenter.v
 
     @NonNull
     @Override
-    public CategoryPresenter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryPresenter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context= parent.getContext();
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_category, parent, false);
-        return new viewholder(inflate);
+        return new Viewholder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryPresenter.viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryPresenter.Viewholder holder, int position) {
 
         holder.titleTxt.setText(items.get(position).getName());
 
@@ -95,10 +96,10 @@ public class CategoryPresenter  extends RecyclerView.Adapter<CategoryPresenter.v
         return items.size();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder {
+    public static class Viewholder extends RecyclerView.ViewHolder {
         TextView titleTxt;
         ImageView pic;
-        public viewholder(@NonNull View itemView) {
+        public Viewholder(@NonNull View itemView) {
             super(itemView);
             titleTxt = itemView.findViewById(R.id.catNameTxt);
             pic = itemView.findViewById(R.id.imgCat);

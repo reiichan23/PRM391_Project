@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.ViewHolder> {
     ArrayList<Foods> items;
     Context context;
+    ViewholderListFoodBinding binding;
 
     public FoodListPresenter(ArrayList<Foods> items) {
         this.items = items;
@@ -32,7 +33,7 @@ public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        ViewholderListFoodBinding binding = ViewholderListFoodBinding.inflate(inflater, parent, false);
+        binding = ViewholderListFoodBinding.inflate(inflater, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -45,7 +46,6 @@ public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.Vi
         holder.binding.priceTxt.setText("VND" + food.getPrice());
         holder.binding.rateTxt.setText("" + food.getStar());
 
-        Log.d("image", food.getImagePath());
         Glide.with(context)
                 .load(food.getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
@@ -66,7 +66,7 @@ public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ViewholderListFoodBinding binding;
 
-        public ViewHolder(ViewholderListFoodBinding binding) {
+        public ViewHolder(@NonNull ViewholderListFoodBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

@@ -1,6 +1,7 @@
 package com.example.prm391_project.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -46,8 +47,11 @@ public class ListFoodsActivity extends BaseActivity {
         ArrayList<Foods> list = new ArrayList<>();
 
         Query query;
+        boolean viewAll = getIntent().getBooleanExtra("viewAll", false);
 
-        if(isSearch){
+        if (viewAll) {
+            query = myRef;
+        } else if(isSearch){
             query = myRef.orderByChild("Title").startAt(searchText).endAt(searchText+'\uf8ff');
         }else {
             query = myRef.orderByChild("CategoryId").equalTo(categoryId);
@@ -76,8 +80,8 @@ public class ListFoodsActivity extends BaseActivity {
     }
 
     private void getIntentExtra() {
-        categoryId = getIntent().getIntExtra("CategoryId",0);
-        categoryName = getIntent().getStringExtra("All");
+        categoryId = getIntent().getIntExtra("CategoryId", 7);
+        categoryName = getIntent().getStringExtra("CategoryName");
         searchText = getIntent().getStringExtra("text");
         isSearch = getIntent().getBooleanExtra("isSearch", false);
 
