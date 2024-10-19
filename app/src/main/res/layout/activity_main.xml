@@ -27,7 +27,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome"
+                    android:text="Chào mừng bạn,"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Foody"
+                    android:text="EcoBites"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -43,8 +43,8 @@
 
                 <ImageView
                     android:id="@+id/logoutBtn"
-                    android:layout_width="45dp"
-                    android:layout_height="34dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +69,7 @@
                     app:srcCompat="@drawable/settings" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/grey_background"
@@ -77,19 +77,20 @@
 
                     <EditText
                         android:id="@+id/searchEdt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@color/grey"
                         android:ems="10"
-                        android:hint="Search Foody..."
+                        android:hint="Tìm kiếm trên EcoBites"
                         android:inputType="text"
                         android:padding="8dp"
                         android:textAlignment="center"
                         android:textColor="@color/blue_grey"
                         android:textColorHint="@color/blue_grey"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:ignore="NestedWeights" />
 
                     <ImageView
                         android:id="@+id/searchBtn"
@@ -98,7 +99,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="4dp"
                         android:padding="4dp"
-                        app:srcCompat="@drawable/search_icon" />
+                        app:srcCompat="@drawable/search_icon"
+                        tools:ignore="ContentDescription" />
                 </LinearLayout>
 
                 <ImageView
@@ -108,10 +110,9 @@
                     android:layout_marginStart="6dp"
                     android:background="@drawable/grey_background"
                     android:padding="12dp"
-                    app:srcCompat="@drawable/basket" />
+                    app:srcCompat="@drawable/basket"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,12 +124,12 @@
 
                 <TextView
                     android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Today's best Foods"
+                    android:text="Gợi ý món ăn"
                     android:textColor="@color/blue_grey"
-                    android:textSize="22dp"
+                    android:textSize="24sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -136,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red"
-                    android:text="VIEW ALL" />
+                    android:text="Xem tất cả" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,12 +172,12 @@
             <TextView
                 android:layout_marginStart="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Choose Category"
+                android:text="Phân loại"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/blue_grey"
-                android:textSize="22dp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -197,6 +198,8 @@
                     android:id="@+id/categoryView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
