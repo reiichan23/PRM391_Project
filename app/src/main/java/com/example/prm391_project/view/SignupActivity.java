@@ -33,7 +33,7 @@ ActivitySignupBinding binding;
             }
 
             if(!repassword.equals(password)){
-                Toast.makeText(SignupActivity.this, "Your password not matching", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Passwords do not match. Please try again!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
