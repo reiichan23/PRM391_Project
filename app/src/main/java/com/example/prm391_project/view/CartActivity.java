@@ -55,10 +55,10 @@ public class CartActivity extends BaseActivity {
         double total = (double) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
         double itemTotal = (double) Math.round(managementCart.getTotalFee() * 100) /100;
 
-        binding.totalFeeTxt.setText("$"+itemTotal);
-        binding.taxTxt.setText("$" + tax);
-        binding.deliveryTxt.setText("$" + delivery);
-        binding.totalTxt.setText("$" + total);
+        binding.totalFeeTxt.setText("VND"+itemTotal);
+        binding.taxTxt.setText("VND" + tax);
+        binding.deliveryTxt.setText("VND" + delivery);
+        binding.totalTxt.setText("VND" + total);
     }
 
     private void setVariable() {

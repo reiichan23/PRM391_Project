@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -45,14 +46,21 @@ public class MainActivity extends BaseActivity {
 
         binding.searchBtn.setOnClickListener(view -> {
             String text = binding.searchEdt.getText().toString();
-            if(!text.isEmpty()){
+            Log.d(TAG, "setVariable: " + text);
+            if(!text.trim().isEmpty()){
                 Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
                 intent.putExtra("text", text);
                 intent.putExtra("isSearch", true);
                 startActivity(intent);
             }
         });
+
         binding.cardBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
+
+        binding.textView14.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void initBestFood() {

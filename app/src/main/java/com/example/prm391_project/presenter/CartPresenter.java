@@ -56,7 +56,7 @@ public class CartPresenter extends RecyclerView.Adapter<CartPresenter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Foods foodItem = list.get(position);
         holder.binding.titleTxt.setText(foodItem.getTitle());
-        holder.binding.feeEachItem.setText("$" + (foodItem.getNumberInCart() * foodItem.getPrice()));
+        holder.binding.feeEachItem.setText("VND" + (foodItem.getNumberInCart() * foodItem.getPrice()));
         holder.binding.totalEachItem.setText(foodItem.getNumberInCart() + " * $" + foodItem.getPrice());
         holder.binding.numberItemTxt.setText(String.valueOf(foodItem.getNumberInCart()));
 
