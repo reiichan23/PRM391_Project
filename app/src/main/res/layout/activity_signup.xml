@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
+                android:layout_height="275dp"
                 android:layout_marginTop="48dp"
                 app:srcCompat="@drawable/logo_ecobites" />
 
@@ -52,72 +52,69 @@
 
             <EditText
                 android:id="@+id/userEdt"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="372dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
+                android:background="@drawable/edittextbackground"
+                android:ems="10"
                 android:hint="Email address"
+                android:inputType="text"
                 android:textAlignment="center"
                 android:textColorHint="@color/blue_grey"
-                android:textSize="16sp"
-                android:ems="10"
-                android:background="@drawable/edittextbackground"
-                android:inputType="text"
-                />
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/passEdt"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="372dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
+                android:background="@drawable/edittextbackground"
+                android:ems="10"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:textAlignment="center"
                 android:textColorHint="@color/blue_grey"
-                android:textSize="16sp"
-                android:ems="10"
-                android:background="@drawable/edittextbackground"
-                android:inputType="textPassword"
-                />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/rePassEdt"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="372dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
+                android:background="@drawable/edittextbackground"
+                android:ems="10"
                 android:hint="Re-Password"
+                android:inputType="textPassword"
                 android:textAlignment="center"
                 android:textColorHint="@color/blue_grey"
-                android:textSize="16sp"
-                android:ems="10"
-                android:background="@drawable/edittextbackground"
-                android:inputType="textPassword"
-                />
+                android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signupBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SignUp"
-                android:background="@drawable/red_button_background"
-                android:layout_margin="32dp"
                 style="@android:style/Widget.Button"
+                android:layout_width="371dp"
+                android:layout_height="61dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/red_button_background"
+                android:text="SignUp"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="49dp"
                 android:layout_marginTop="16dp"
                 android:text="Are you a member? Login"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
