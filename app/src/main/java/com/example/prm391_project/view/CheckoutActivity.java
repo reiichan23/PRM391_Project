@@ -3,14 +3,25 @@ package com.example.prm391_project.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm391_project.Api.CreateOrder;
 import com.example.prm391_project.databinding.ActivityCheckoutBinding;
 import com.example.prm391_project.helper.ManagementCart;
 import com.example.prm391_project.presenter.CheckoutPresenter;
+
+import org.json.JSONObject;
+
+import vn.zalopay.sdk.Environment;
+import vn.zalopay.sdk.ZaloPayError;
+import vn.zalopay.sdk.ZaloPaySDK;
+import vn.zalopay.sdk.listeners.PayOrderListener;
 
 public class CheckoutActivity extends BaseActivity {
     private ActivityCheckoutBinding binding;
@@ -55,13 +66,71 @@ public class CheckoutActivity extends BaseActivity {
         double total = (double) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
         double itemTotal = (double) Math.round(managementCart.getTotalFee() * 100) /100;
 
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // ZaloPay SDK Init
+        ZaloPaySDK.init(2553, Environment.SANDBOX);
+
         binding.totalFeeTxt.setText("VND"+itemTotal);
         binding.taxTxt.setText("VND" + tax);
         binding.deliveryTxt.setText("VND" + delivery);
         binding.totalTxt.setText("VND" + total);
+        String totalString = String.format("%.0f",total);
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CreateOrder orderApi = new CreateOrder();
+                try {
+                    JSONObject data = orderApi.createOrder(totalString);
+                    Log.d("Amount", totalString);
+
+                    String code = data.getString("return_code");
+                    Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
+
+                    if (code.equals("1")) {
+
+
+                        String token = data.getString("zp_trans_token");
+                        ZaloPaySDK.getInstance().payOrder(CheckoutActivity.this, token, "demozpdk://app", new PayOrderListener() {
+                            @Override
+                            public void onPaymentSucceeded(String s, String s1, String s2) {
+
+                            }
+
+                            @Override
+                            public void onPaymentCanceled(String s, String s1) {
+
+                            }
+
+                            @Override
+                            public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
+
+                            }
+                        });
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+        });
+
     }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ZaloPaySDK.getInstance().onResult(intent);
+    }
+
 
     private void setVariable() {
         binding.backBtn.setOnClickListener(view -> finish());
+
     }
 }
