@@ -31,23 +31,23 @@ public class DetailActivity extends BaseActivity {
         Glide.with(DetailActivity.this)
                 .load(object.getImagePath())
                 .into(binding.pic);
-        binding.priceTxt.setText("$"+ object.getPrice());
+        binding.priceTxt.setText( object.getPrice() + " ₫" );
         binding.titleTxt.setText(object.getTitle());
         binding.descriptionTxt.setText(object.getDescription());
         binding.rateTxt.setText(object.getStar()+" Rating");
         binding.ratingBar.setRating((float) object.getStar());
-        binding.totalTxt.setText((num*object.getPrice() + "$"));
+        binding.totalTxt.setText((num*object.getPrice() + " ₫" ));
 
         binding.plusBtn.setOnClickListener(view -> {
             num = num+1;
             binding.numTxt.setText(num+" ");
-            binding.totalTxt.setText("$"+(num * object.getPrice()));
+            binding.totalTxt.setText((num * object.getPrice()) + " ₫");
         });
         binding.minusBtn.setOnClickListener(view -> {
             if (num >1){
                 num = num -1;
                 binding.numTxt.setText(num + "");
-                binding.totalTxt.setText("$" + (num * object.getPrice()));
+                binding.totalTxt.setText((num * object.getPrice()) + " ₫");
             }
         });
         binding.addbtn.setOnClickListener(view -> {

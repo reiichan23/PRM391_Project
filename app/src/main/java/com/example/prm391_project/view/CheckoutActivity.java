@@ -73,10 +73,10 @@ public class CheckoutActivity extends BaseActivity {
         // ZaloPay SDK Init
         ZaloPaySDK.init(2553, Environment.SANDBOX);
 
-        binding.totalFeeTxt.setText("VND"+itemTotal);
-        binding.taxTxt.setText("VND" + tax);
-        binding.deliveryTxt.setText("VND" + delivery);
-        binding.totalTxt.setText("VND" + total);
+        binding.totalFeeTxt.setText(itemTotal + " ₫");
+        binding.taxTxt.setText( tax + " ₫" );
+        binding.deliveryTxt.setText(delivery + " ₫" );
+        binding.totalTxt.setText(total + " ₫" );
         String totalString = String.format("%.0f",total);
 
         binding.button2.setOnClickListener(new View.OnClickListener() {
