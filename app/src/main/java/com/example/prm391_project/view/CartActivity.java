@@ -19,7 +19,7 @@ public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
     private RecyclerView.Adapter adapter;
     private ManagementCart managementCart;
-    private double tax;
+    private int tax;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +52,10 @@ public class CartActivity extends BaseActivity {
         double percentTax=0.02;
         double delivery=10;
 
-        tax = (double) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
+        tax = (int) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
 
-        double total = (double) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
-        double itemTotal = (double) Math.round(managementCart.getTotalFee() * 100) /100;
+        int total = (int) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
+        int itemTotal = (int) Math.round(managementCart.getTotalFee() * 100) /100;
 
         binding.totalFeeTxt.setText(itemTotal + " ₫");
         binding.taxTxt.setText( tax + " ₫" );

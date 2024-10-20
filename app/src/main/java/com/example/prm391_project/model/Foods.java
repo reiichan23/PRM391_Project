@@ -10,7 +10,7 @@ public class Foods implements Serializable {
     private boolean BestFood;
     private int Id;
     private int LocationId;
-    private double Price;
+    private int Price;
     private String ImagePath;
     private int PriceId;
     private double Star;
@@ -68,11 +68,11 @@ public class Foods implements Serializable {
         LocationId = locationId;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         Price = price;
     }
 
