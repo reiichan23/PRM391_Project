@@ -96,6 +96,12 @@ public class CheckoutActivity extends BaseActivity {
                     return;
                 }
 
+                String pattern = "^0\\d{9}$";
+                if (!phoneNumber.matches(pattern)) {
+                    Toast.makeText(CheckoutActivity.this, "Vui lòng điền số điện thoại hợp lệ!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 CreateOrder orderApi = new CreateOrder();
                 try {
                     JSONObject data = orderApi.createOrder(totalString);
