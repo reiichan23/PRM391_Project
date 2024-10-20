@@ -82,6 +82,20 @@ public class CheckoutActivity extends BaseActivity {
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Check phone number and address
+                String phoneNumber = binding.phoneEditText.getText().toString();
+                String address = binding.addressEditText.getText().toString();
+
+                if (address.isEmpty()) {
+                    Toast.makeText(CheckoutActivity.this, "Vui lòng điền địa chỉ giao hàng!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (phoneNumber.isEmpty()) {
+                    Toast.makeText(CheckoutActivity.this, "Vui lòng điền số điện thoại giao hàng!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 CreateOrder orderApi = new CreateOrder();
                 try {
                     JSONObject data = orderApi.createOrder(totalString);
@@ -91,8 +105,6 @@ public class CheckoutActivity extends BaseActivity {
                     Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
 
                     if (code.equals("1")) {
-
-
                         String token = data.getString("zp_trans_token");
                         ZaloPaySDK.getInstance().payOrder(CheckoutActivity.this, token, "demozpdk://app", new PayOrderListener() {
                             @Override
@@ -117,15 +129,11 @@ public class CheckoutActivity extends BaseActivity {
                                 startActivity(intent);
                             }
                         });
-
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
             }
-
         });
 
     }
