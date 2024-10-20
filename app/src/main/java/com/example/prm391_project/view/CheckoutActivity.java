@@ -27,7 +27,7 @@ public class CheckoutActivity extends BaseActivity {
     private ActivityCheckoutBinding binding;
     private ManagementCart managementCart;
     private RecyclerView.Adapter adapter;
-    private double tax;
+    private int tax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +59,12 @@ public class CheckoutActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     private void calculateCart() {
         double percentTax=0.02;
-        double delivery=10;
+        int delivery=10;
 
-        tax = (double) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
+        tax = (int) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
 
-        double total = (double) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
-        double itemTotal = (double) Math.round(managementCart.getTotalFee() * 100) /100;
+        int total = (int) Math.round((managementCart.getTotalFee() + tax + delivery) * 100) /100;
+        int itemTotal = (int) Math.round(managementCart.getTotalFee() * 100) /100;
 
         StrictMode.ThreadPolicy policy = new
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -77,7 +77,7 @@ public class CheckoutActivity extends BaseActivity {
         binding.taxTxt.setText( tax + " ₫" );
         binding.deliveryTxt.setText(delivery + " ₫" );
         binding.totalTxt.setText(total + " ₫" );
-        String totalString = String.format("%.0f",total);
+        String totalString = Integer.toString(total);
 
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override

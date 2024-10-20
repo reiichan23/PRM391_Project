@@ -43,7 +43,7 @@ public class FoodListPresenter extends RecyclerView.Adapter<FoodListPresenter.Vi
         Foods food = items.get(position);
         holder.binding.titleTxt.setText(food.getTitle());
         holder.binding.timeTxt.setText(food.getTimeValue() + " ph");
-        holder.binding.priceTxt.setText("VND" + food.getPrice());
+        holder.binding.priceTxt.setText(food.getPrice()+" ₫");
         holder.binding.rateTxt.setText("" + food.getStar());
 
         Glide.with(context)

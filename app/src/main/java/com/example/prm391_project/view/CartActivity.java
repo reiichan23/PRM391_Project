@@ -50,7 +50,7 @@ public class CartActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     private void calculateCart() {
         double percentTax=0.02;
-        double delivery=10;
+        int delivery=10000;
 
         tax = (int) Math.round(managementCart.getTotalFee() * percentTax * 100.0) /100;
 
