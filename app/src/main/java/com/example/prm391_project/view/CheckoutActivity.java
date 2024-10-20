@@ -1,29 +1,27 @@
 package com.example.prm391_project.view;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-//import com.example.prm391_project.Adapter.CartAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.example.prm391_project.databinding.ActivityCartBinding;
+import com.example.prm391_project.databinding.ActivityCheckoutBinding;
 import com.example.prm391_project.helper.ManagementCart;
-import com.example.prm391_project.presenter.CartPresenter;
+import com.example.prm391_project.presenter.CheckoutPresenter;
 
-public class CartActivity extends BaseActivity {
-    private ActivityCartBinding binding;
-    private RecyclerView.Adapter adapter;
+public class CheckoutActivity extends BaseActivity {
+    private ActivityCheckoutBinding binding;
     private ManagementCart managementCart;
+    private RecyclerView.Adapter adapter;
     private double tax;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCartBinding.inflate(getLayoutInflater());
+        binding = ActivityCheckoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         managementCart = new ManagementCart(this);
@@ -43,7 +41,7 @@ public class CartActivity extends BaseActivity {
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         binding.cardView.setLayoutManager(linearLayoutManager);
-        adapter = new CartPresenter(managementCart.getListCart(), this, this::calculateCart);
+        adapter = new CheckoutPresenter(managementCart.getListCart());
         binding.cardView.setAdapter(adapter);
     }
 
@@ -65,17 +63,5 @@ public class CartActivity extends BaseActivity {
 
     private void setVariable() {
         binding.backBtn.setOnClickListener(view -> finish());
-        binding.button2.setOnClickListener(view -> startActivity(new Intent(CartActivity.this, CheckoutActivity.class)));
     }
-//private void setVariable() {
-//    // Set the back button functionality
-//    binding.backBtn.setOnClickListener(view -> finish());
-//
-//    // Set the button functionality to navigate to the checkout page
-//    binding.button2.setOnClickListener(view -> {
-//        Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
-//        startActivity(intent);
-//    });
-//}
-
 }
