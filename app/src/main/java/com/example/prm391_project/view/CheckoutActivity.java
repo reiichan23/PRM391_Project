@@ -97,17 +97,24 @@ public class CheckoutActivity extends BaseActivity {
                         ZaloPaySDK.getInstance().payOrder(CheckoutActivity.this, token, "demozpdk://app", new PayOrderListener() {
                             @Override
                             public void onPaymentSucceeded(String s, String s1, String s2) {
+                                Intent intent = new Intent(CheckoutActivity.this, PaymentStatusActivity.class);
+                                intent.putExtra("status", "Thanh toán thành công");
 
+                                startActivity(intent);
                             }
 
                             @Override
                             public void onPaymentCanceled(String s, String s1) {
-
+                                Intent intent = new Intent(CheckoutActivity.this, PaymentStatusActivity.class);
+                                intent.putExtra("status", "Thanh toán bị hủy");
+                                startActivity(intent);
                             }
 
                             @Override
                             public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
-
+                                Intent intent = new Intent(CheckoutActivity.this, PaymentStatusActivity.class);
+                                intent.putExtra("status", "Thanh toán thất bại");
+                                startActivity(intent);
                             }
                         });
 
