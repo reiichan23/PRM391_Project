@@ -63,4 +63,8 @@ public class ManagementCart {
         tinyDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
+    public void clearCart() {
+        tinyDB.remove("CartList");
+        Toast.makeText(context, "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
+    }
 }
