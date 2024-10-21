@@ -22,6 +22,7 @@ public class SignupActivity extends BaseActivity {
 
     private void setVariable() {
         binding.signupBtn.setOnClickListener(v -> {
+//            thuc hien lay username password
             String email = binding.userEdt.getText().toString().trim();
             String password = binding.passEdt.getText().toString().trim();
             String repassword = binding.rePassEdt.getText().toString().trim();
