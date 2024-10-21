@@ -13,6 +13,11 @@ public class Foods implements Serializable {
     private int Price;
     private String ImagePath;
     private int PriceId;
+    private double Star;
+    private int TimeId;
+    private int TimeValue;
+    private String Title;
+    private int numberInCart;
 
     public Foods() {
     }
