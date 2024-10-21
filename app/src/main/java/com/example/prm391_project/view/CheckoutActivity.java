@@ -108,13 +108,14 @@ public class CheckoutActivity extends BaseActivity {
                     Log.d("Amount", totalString);
 
                     String code = data.getString("return_code");
-                    Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
+
 
                     if (code.equals("1")) {
                         String token = data.getString("zp_trans_token");
                         ZaloPaySDK.getInstance().payOrder(CheckoutActivity.this, token, "demozpdk://app", new PayOrderListener() {
                             @Override
                             public void onPaymentSucceeded(String s, String s1, String s2) {
+                                managementCart.clearCart();
                                 Intent intent = new Intent(CheckoutActivity.this, PaymentStatusActivity.class);
                                 intent.putExtra("status", "Thanh toán thành công");
 

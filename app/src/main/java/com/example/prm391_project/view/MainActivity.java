@@ -10,13 +10,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
+import com.example.prm391_project.R;
 import com.example.prm391_project.databinding.ActivityMainBinding;
 import com.example.prm391_project.model.Foods;
 import com.example.prm391_project.model.Category;
 import com.example.prm391_project.presenter.BestFoodsPresenter;
 import com.example.prm391_project.presenter.CategoryPresenter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,11 +30,23 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
+    private FirebaseAuth mAuth;
+    private TextView welcomeTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        mAuth = FirebaseAuth.getInstance();
+        welcomeTextView = findViewById(R.id.textView9);
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String welcomeMessage = "Hello, " + currentUser.getEmail() + "!";
+            welcomeTextView.setText(welcomeMessage);
+        }
 
         initBestFood();
         initCategory();
@@ -41,12 +56,12 @@ public class MainActivity extends BaseActivity {
     private void setVariable() {
         binding.logoutBtn.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         });
 
         binding.searchBtn.setOnClickListener(view -> {
             String text = binding.searchEdt.getText().toString();
-            if(!text.trim().isEmpty()){
+            if (!text.trim().isEmpty()) {
                 Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
                 intent.putExtra("text", text);
                 intent.putExtra("isSearch", true);
@@ -71,11 +86,11 @@ public class MainActivity extends BaseActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot issue: snapshot.getChildren()){
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
                     }
-                    if(!list.isEmpty()){
+                    if (!list.isEmpty()) {
                         binding.bestFoodView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
                         RecyclerView.Adapter adapter = new BestFoodsPresenter(list);
                         binding.bestFoodView.setAdapter(adapter);
@@ -98,12 +113,12 @@ public class MainActivity extends BaseActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot issue: snapshot.getChildren()){
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
                         Category category = issue.getValue(Category.class);
                         list.add(category);
                     }
-                    if(!list.isEmpty()){
+                    if (!list.isEmpty()) {
                         Log.d("Category", list.toString());
                         binding.categoryView.setLayoutManager(new GridLayoutManager(MainActivity.this, 4));
                         RecyclerView.Adapter adapter = new CategoryPresenter(list);
