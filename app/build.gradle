@@ -45,8 +45,7 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.firebase.auth
     implementation libs.firebase.database
-    implementation fileTree(dir: 'D:\\STUDY\\Semester 8\\PRM391\\zalopay', include: ['*.aar', '*.jar'], exclude: [])
-
+    implementation fileTree(dir: 'D:\\My_Workspace\\Fall_2024', include: ['*.aar', '*.jar'], exclude: [])
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
